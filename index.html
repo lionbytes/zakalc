@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Amiri:400,400i,700,700i|Cairo:200,300,400,600,700,900|Changa:200,300,400,500,600,700,800|El+Messiri:400,500,600,700|Reem+Kufi&amp;display=swap&amp;subset=arabic,cyrillic,latin-ext" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+  <!-- <link rel="stylesheet" href="solar.css" /> -->
+  
+  <title>Zakat Calc</title>
+  <style>
+    *::-webkit-input-placeholder { color: #bbb !important; }
+        *:-moz-placeholder { color: #bbb !important; opacity: 1; }
+        *::-moz-placeholder { color: #bbb !important; opacity: 1; }
+    *:-ms-input-placeholder { color: #bbb !important; }
+    body {
+      font-family: 'Cairo', sans-serif !important;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: bold;
+    }
+    .table-sm td, .table-sm th {
+      padding: 0;
+    }
+    .cmd-line {
+      background-color: #171314;
+      border: medium none;
+      border-radius: 4px;
+      box-shadow: 1px 1px 2px rgb(0 0 0 / 70%) inset, -1px -1px 1px rgb(255 255 255 / 20%) inset;
+      color: #bbb;
+      font-family: 'Share Tech Mono', monospace !important;
+      font-size: 11pt;
+      padding: 40px 55px;
+    }
+    .cmd-line pre {
+      background-color: #171314;
+      color: #bbb;
+      font-family: 'Share Tech Mono', monospace !important;
+      font-size: 11pt;
+      margin: 0;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  </head>
+  <body style="background-color: rgb(233, 236, 239);" class="">
+    <main role="main">
+      <header>
+  <div class="bg-dark collapse" id="navbarHeader" style="">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">About</h4>
+          <p class="text-muted">Zakat is the Islamic annual charity. This is a simple Zakat  calculator, built with Bootstrap 4 and vanilla JavaScript. This REPL-like Zakat calculator is designed to only aid you in calculating the Zakat of your liquid assets, and is not in any way, shape, or form a professional Zakat calculation application.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="https://twitter.com/lionbytes" target="_blank" class="text-white">Follow on Twitter</a></li>
+            <li><a href="https://github.com/lionbytes" target="_blank" class="text-white">Follow on GitHub</a></li>
+            <li><a href="mailto:lionbytes.net@gmail.com" target="_blank" class="text-white">Email me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container d-flex justify-content-between">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <i class="fas fa-seedling mr-2 fa-lg text-success"></i>
+        <strong class="h4 mb-0 font-weight-bold">Zakalc</strong>
+      </a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+      <div class="container-fluid py-5 mb-4" style="background-color: #e9ecef;">
+        <div class="container">
+  <div class="row d-flex">
+    <div class="col-12 text-right d-none" style="margin: 5px -5px -44px; z-index: 1;">
+      <button type="button" class="btn btn-sm btn-primary mb-2 d-inline">
+        <strong>Import </strong>
+        <i class="far fa-folder-open ml-1"></i>
+        <span class="fa-xs"> JSON </span>
+      </button>
+      <button type="button" class="btn btn-sm btn-primary mb-2 d-inline">
+        <strong>Export </strong>
+        <i class="fas fa-file-import ml-1"></i>
+        <span class="fa-xs"> JSON </span>
+      </button>
+    </div>
+
+      <div class="col-lg-6 col-12 ">
+
+  <section class="form-inline border border-light p-3 mb-5 position-relative">
+      <h5 class="p-2 position-absolute" style="background-color: #e9ecef;top: -23px;">Date</h5>
+    <label class="p-2 mb-2">Hijri</label>
+    <input id="hijri" type="text" class="form-control mb-2 mr-sm-2 px-3 py-0 disabled border border-light" value="" style="width: 140px;     background-color: #ced6de;" disabled="">
+  
+    <label class="p-2 mb-2">Gregorian </label>
+    <input id="gregorian" type="text" class="form-control mb-2 mr-sm-2 px-3 py-0 disabled border border-light" value="" style="width: 188px;     background-color: #ced6de;" disabled="">
+  </section>
+
+  <form id="formCurrency" action="javascript:void(0);" class="border border-light p-3 mb-5 position-relative">
+    <h5 class="p-2 position-absolute" style="background-color: #e9ecef;top: -23px;">Currency</h5>
+    <label class="p-2 mb-2">Currency of the country you reside in:</label>
+    <select id="currLocal" class="form-control mb-2 mr-sm-2 px-1 py-0" required>
+      <option value=""></option>
+      <option value="TRY" selected="">TRY</option>
+      <option value="USD">USD</option>
+      <option value="EURO">EURO</option>
+    </select>
+
+    <label class="p-2 mb-2">Currency you want to calculate all your savings in:</label>
+    <select id="currSavings" class="form-control mb-2 mr-sm-2 px-1 py-0" required>
+      <option value=""></option>
+      <option value="TRY">TRY</option>
+      <option value="USD" selected="">USD</option>
+      <option value="EURO">EURO</option>
+    </select>
+
+    <button id="defineCurrency" type="submit" class="btn btn-primary mb-2">
+      Submit
+    </button>
+
+  </form>
+  
+  <form class="allform" action="javascript:void(0);" >
+  <div id="formRates" class="border border-light p-3 mb-5 position-relative">
+      <h5 class="p-2 position-absolute" style="background-color: #e9ecef;top: -23px;">Rates</h5>
+      <div class="form-row">
+        <div class="col-auto d-flex" id="convert">
+          <label class="p-2 mb-2 text-nowrap">_ to _</label>
+          <input type="number" step="0.01" class="form-control mb-2 px-1 py-0" placeholder=""
+            style="width: 70px;z-index: 1;" required="">
+        </div>
+        <div class="col-auto d-flex" id="rateGold">
+          <label class="p-2 mb-2">Gold</label>
+          <input type="number" step="0.01" class="form-control mb-2 px-1 py-0" placeholder=""
+            style="width: 70px;" required="">
+        </div>
+        <div class="col-auto d-flex" id="rateSilver">
+          <label class="p-2 mb-2" >Silver</label>
+          <input type="number" step="0.01" class="form-control mb-2 px-1 py-0" placeholder=""
+            style="width: 70px;" required="">
+        </div>
+      </div>
+  </div>
+
+  <div id="formSavings" class="border border-light p-3 pb-4 mb-5 position-relative">
+    <h5 class="p-2 position-absolute" style="background-color: #e9ecef;top: -23px;">My Savings</h5>
+    <table id="savingsTable" class="table table-borderless table-sm mt-2 mb-0">
+      <tbody>
+        <tr class="fndsrc fndsrc-grp fndsrc-grp-header template d-none" style="background-color: #f4f5f7;">
+          <th scope="row" class="text-right"><label class="p-2 mb-0">Label</label></th>
+          <td>
+            <div class="input-group mr-sm-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+              </div>
+              <input type="number" class="form-control pr-1 disabled" placeholder="Please add a new sub-field..." value="0" disabled="">
+              <button type="button" class="btn-delsrc btn btn-sm border ml-2">
+                <i class="fas fa-trash-alt fa-1x px-1"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr class="fndsrc fndsrc-grp fndsrc-grp-body template d-none" style="background-color: #f4f5f7;">
+          <td colspan="2">
+            <div class="row px-2">
+              <div class="col-12 position-relative">
+                <table class="table table-borderless mx-2 mb-1">
+                  <tbody>
+                    <tr class="fndsrc fndsrc-subrow template d-none">
+                      <th scope="row" class="text-right"><label class="p-1 mb-0">Sub-label</label></th>
+                      <td>
+                        <div class="input-group input-group-sm mr-sm-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">$</div>
+                          </div>
+                          <input type="number" class="form-control pr-1" placeholder="In USD">
+                          <button type="button" class="btn-delsrc btn btn-sm btn-dark ml-2">
+                            <i class="far fa-trash-alt fa-sm px-0"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+                <div class="addsrc-sm text-right rounded-bottom" style="margin: 4px -11px -3px;background-color: #dae1e6;">
+                  <small class="text-muted">Add Fund Sub-source</small>
+                  <button type="button" class="btn btn-addsrc-sub btn-sm btn-success m-1" data-toggle="modal" data-target="#addFieldModal" title="Wallet, Safe, Bank, etc.">
+                    <i class="fa fa-plus fa-sm px-0"></i>
+                  </button>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="fndsrc fndsrc-row template d-none">
+          <th scope="row" class="text-right"><label class="p-2 mb-0">Label</label></th>
+          <td>
+            <div class="input-group mr-sm-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+              </div>
+              <input type="number" class="form-control pr-1" placeholder="In USD">
+              <button type="button" class="btn-delsrc btn btn-sm border ml-2">
+                <i class="fas fa-trash-alt fa-1x px-1"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="addsrc-lg text-right rounded-bottom p-1" style="margin: 20px -16px -24px; background-color: #ced6de;">
+      <span class="text-muted mx-1">Add Fund Source </span>
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" id="bigGreen" class="btn btn-addsrc btn-success" title="Wallet, Safe, Bank, etc." data-toggle="modal" data-target="#addFieldModal">
+          <i class="fa fa-plus"></i>
+        </button>
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-sm btn-success dropdown-toggle border border-success pl-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #318c37;">
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+            <a class="dropdown-item btn-addsrc" href="#" role="button" data-toggle="modal" data-target="#addFieldModal" onclick="document.querySelector('#bigGreen').click();">Add Fund Source </a>
+            <a class="dropdown-item btn-addsrc-grp" href="#" role="button" data-toggle="modal" data-target="#addFieldGroupModal">Add Grouped Fund Sources</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <button id="zakalc" type="submit" class="btn btn-lg btn-primary d-block w-100 position-absolute mb-2 mt-5">
+      <i class="fa fa-seedling d-none"></i><span> Zakalc! </span></button>
+    </div>
+  </div>
+</form>
+  <!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="addFieldModal" tabindex="-1" aria-labelledby="addFieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addFieldModalLabel">
+            Fund Source Label
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control pr-1 fa-2x border-0" title="Wallet, Safe, Bank, etc." placeholder="Write title here..">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success pl-4 pr-3 font-weight-bold">Add <i class="fa fa-plus px-1"></i></button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</div>
+
+  <div class="col-lg-6 col-12 d-flex">
+    <div class="cmd-line align-self-stretch w-100 px-5 overflow-hidden">
+      <pre id="cmdline-msg"><span class="msg-success text-success"><h4 class="mb-0" style="color: #bbb;">Welcome, to the Zakalc app. </h4><span style="color: #bbb;">1. First, please fill in the Currency form fields.</span></span><span class="msg-error"></span></pre>
+      
+      <pre id="cmdline-rates"></pre>
+      <div id="cmdline-savings" class="d-none">
+        <strong>My Savings</strong><br>
+        <table class="table table-sm table-borderless mb-0 text-light">
+          <tbody>
+            <tr class="savrow template d-none">      
+              <td style="white-space: nowrap; width: 1%; padding-right: 20px;">Label</td>
+              <td>$XXXX</td>
+            </tr>
+            <tr class="savrow-subtable template d-none">
+              <td colspan="2">
+                <table class="table table-borderless m-0 p-0">
+                  <tbody>
+                    <tr class="savrow-subrow template d-none">
+                      <td style="white-space: nowrap; width: 1%; padding-right: 20px;">Sub-label</td>
+                      <td>$XXXX</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>    
+          </tbody>
+        </table>
+      </div>
+      <pre id="cmdline-result"></pre>
+    </div>
+  </div>
+  </div>
+  
+        </div><!-- /.container -->
+      </div>
+  
+      <!-- FOOTER -->
+      <footer class="footer">
+        <div class="container">
+          <p class="float-right"><a href="#">Back to top</a></p>
+          <span class="text-muted">All rights reserved to 
+            <a href="https://www.lionbytes.net" target="_blank" rel="noreferrer">
+              <img src="https://lionbytes.net/images/lionbytes.webp" alt="Lionbytes" title="Lionbytes" 
+                   style="height: 21px; width: auto; margin: -2px -8px 0;"></a>.
+          </span>
+        </div>
+      </footer>
+    </main>
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="zakat.js"></script>
+
+</body></html>
