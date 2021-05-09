@@ -8,7 +8,7 @@ Zakat is the Islamic annual charity. This is a simple Zakat  calculator, built w
 - Add Gold option to currency types
 - Test for negative values (e.g. Debt for Osama $-246)
 - Rename 'MySavings' to 'LiquidAssets'
-- Quickly: Make it look Islamic
+- Quickly: Add Islamic art theme touches
 - LAUNCH!
 - Export data to JSON under year number
 - Import data from JSON under year number
