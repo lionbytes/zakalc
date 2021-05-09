@@ -113,17 +113,17 @@
     <h5 class="p-2 position-absolute" style="background-color: #e9ecef;top: -23px;">Currency</h5>
     <label class="p-2 mb-2">Currency of the country you reside in:</label>
     <select id="currLocal" class="form-control mb-2 mr-sm-2 px-1 py-0" required>
-      <option value=""></option>
-      <option value="TRY" selected="">TRY</option>
+      <option value="" selected=""></option>
+      <option value="TRY">TRY</option>
       <option value="USD">USD</option>
       <option value="EURO">EURO</option>
     </select>
 
     <label class="p-2 mb-2">Currency you want to calculate all your savings in:</label>
     <select id="currSavings" class="form-control mb-2 mr-sm-2 px-1 py-0" required>
-      <option value=""></option>
+      <option value="" selected=""></option>
       <option value="TRY">TRY</option>
-      <option value="USD" selected="">USD</option>
+      <option value="USD">USD</option>
       <option value="EURO">EURO</option>
     </select>
 
@@ -274,7 +274,7 @@
 
   <div class="col-lg-6 col-12 d-flex">
     <div class="cmd-line align-self-stretch w-100 px-5 overflow-hidden">
-      <pre id="cmdline-msg"><span class="msg-success text-success"><h4 class="mb-0" style="color: #bbb;">Welcome, to the Zakalc app. </h4><span style="color: #bbb;">1. First, please fill in the Currency form fields.</span></span><span class="msg-error"></span></pre>
+      <pre id="cmdline-msg"><span class="msg-success text-success"><h5 class="mb-0" style="color: #bbb;">Welcome, to the Zakalc app. </h5><span style="color: #bbb;">1. First, please fill in the Currency form fields.</span></span><span class="msg-error"></span></pre>
       
       <pre id="cmdline-rates"></pre>
       <div id="cmdline-savings" class="d-none">
