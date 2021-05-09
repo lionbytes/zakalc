@@ -2,13 +2,6 @@
 Zakat is the Islamic annual charity. This is a simple Zakat  calculator, built with Bootstrap 4 and vanilla JavaScript. This REPL-like Zakat calculator is designed to only aid you in calculating the Zakat of your liquid assets, and is not in any way, shape, or form a professional Zakat calculation application.
 
 ### TODO
-- ~~Combine all forms into a single form~~
-- ~~Add blank select options~~
-- ~~"Your Zakat for this Hijri year is: $XXX USD"~~
-- Remove any personal or private information
-- Rename repo to zakalc-old and keep private
-- Remove all irrelevant files 
-- recreate zakalc as a public repo
 - Finish coding My Savings section
 - Apply focus on Savings field as soon as it is created
 - Use Solar theme
