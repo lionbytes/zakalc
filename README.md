@@ -5,14 +5,16 @@ Zakat is the Islamic annual charity. This is a simple Zakat  calculator, built w
 http://lionbytes.net/zakalc
 
 ### TODO
-- Finish coding My Savings section
+- ~~Add Gold option to currency types~~
 - Apply focus on Savings field as soon as it is created
+- Finish coding My Savings section
 - Use Solar theme
-- Add Gold option to currency types
-- Test for negative values (e.g. Debt for Osama $-246)
 - Rename 'MySavings' to 'LiquidAssets'
+- Test for negative values in My Savings only (e.g. Debt for Osama $-246)
 - Quickly: Add Islamic art theme touches
+- Mention in the app that the Zakat calculation is based on gold quorum
 - LAUNCH!
+- Add a section to choose a base of either gold quorom, silver quorom, or a mix quorom
 - Export data to JSON under year number
 - Import data from JSON under year number
 - Quickly: Refactor JavaScript code if needed
