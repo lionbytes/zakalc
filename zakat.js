@@ -18,7 +18,11 @@ const getCurrSign = (string) => {
     case "EURO":
       sign = "€";
       break;
-    
+
+    case "GOLD":
+      sign = "g";
+      break;
+  
     default:
       break;
   }
@@ -62,7 +66,6 @@ const getQuorum = () => {
     },
 
   };
-  return quorom;
 }
 // CLEAR
 const emptyResults = () => {
@@ -283,6 +286,13 @@ const activateDelBtn = (button) => {
   });
 }
 
+// Focuses on input of passed element
+const focusInput = (row) => {
+  setTimeout(function(){
+    row.querySelector('input').focus();
+  }, 250);
+}
+
 // Create new row on clicking Add button
 dselect('.btn-addsrc').addEventListener('click', function(event){
   const newlabel = prompt("New field label:");
@@ -295,7 +305,8 @@ dselect('.btn-addsrc').addEventListener('click', function(event){
     new_row.querySelector('input').setAttribute('required','true');
     main_list.appendChild(new_row);
     
-    activateDelBtn(new_row.querySelector('.btn-delsrc'));        
+    activateDelBtn(new_row.querySelector('.btn-delsrc'));  
+    focusInput(new_row);
   }
 });
 
@@ -331,7 +342,8 @@ dselect('.btn-addsrc-grp').addEventListener('click', function(event){
         new_subrow.querySelector('input').setAttribute('required','true');
         main_list.appendChild(new_subrow);
         
-        activateDelBtn(new_subrow.querySelector('.btn-delsrc'));        
+        activateDelBtn(new_subrow.querySelector('.btn-delsrc'));     
+        focusInput(new_subrow);   
       }
     });
   }
