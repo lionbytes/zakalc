@@ -10,7 +10,8 @@ http://lionbytes.net/zakalc
 - ~~Rename 'MySavings' to 'LiquidAssets' (canceled)~~
 - ~~On pressing enter, create a new field in My Savings~~
 - ~~Mention in the app that the Zakat calculation is based on gold quorum~~
-- Finish coding the "My Savings" section
+- Inject sum of all subfield values into its header input value
+- Add subfield tooltip on creating fndsrc-header
 - Test for negative values in "My Savings" only (e.g. Debt to Osama $-246)
 - Use Solar theme
 - Quickly: Add Islamic art theme touches
