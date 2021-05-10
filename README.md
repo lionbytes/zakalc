@@ -4,7 +4,7 @@ Zakat is the Islamic annual charity. This is a simple Zakat  calculator, built w
 ### Demo
 http://lionbytes.net/zakalc
 
-### TODO
+### TODO: 1st Cycle
 - ~~Add Gold option to currency types~~
 - ~~Apply focus on Savings field as soon as it is created~~
 - ~~Rename 'MySavings' to 'LiquidAssets' (canceled)~~
@@ -17,10 +17,12 @@ http://lionbytes.net/zakalc
 - Quickly: Add Islamic art theme touches
 - Create GitHub repo cover image
 - LAUNCH!
-- Add a select input to base the Zakat either on gold quorom, silver quorom, or a mix quorom.
-- Fix responsiveness
+
+### TODO: 2nd Cycle
+- Provide an option to base the Zakat either on gold quorom, silver quorom, or a mix quorom of both.
 - Export data to JSON under year number
 - Import data from JSON under year number
+- Fix responsiveness
 
 ### Useful Links
 - https://www.the-lazy-dev.com/en/get-today-hijri-date-in-javascript/
