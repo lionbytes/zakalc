@@ -113,7 +113,6 @@ const formValidator = (str="form") => {
       inputs.forEach(input => {
         if (!input.value) {
           valid = false;
-          //console.log('empty input: ', input);
         }
       });
     }
@@ -121,7 +120,6 @@ const formValidator = (str="form") => {
       selects.forEach(select => {
         if (!select.value) {
           valid = false;
-          //console.log('empty select: ', select);
         }
       });
     }
@@ -166,10 +164,8 @@ const totalSavings = () => {
    `#formSavings .fndsrc-row input[required], 
     #formSavings .fndsrc-grp-header input[required]`
     ).forEach( input => {
-        console.log('input.value ', input.value);
         total += parseFloat(input.value);
   });
-  console.log('Total ', total);
   return total;
 }
 
