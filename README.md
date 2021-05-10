@@ -14,8 +14,8 @@ http://lionbytes.net/zakalc
 - ~~Add subfield tooltip on creating fndsrc-header~~
 - ~~Test for negative values in "My Savings" only (e.g. Debt to Osama $-246)~~
 - Use Solar theme
-- Quickly: Add Islamic art theme touches
-- Create GitHub repo cover image
+- Quickly add subtle Islamic art touches
+- Create a GitHub repo cover image
 - LAUNCH!
 
 ### TODO: 2nd Cycle
