@@ -150,11 +150,11 @@ const defineCurrencyData = (fundata) => {
 
 const printRatesNQuorum = (fundata) => {
   dselect("#cmdline-rates").innerHTML = `<strong>Rates</strong>
-${fundata.currency.savings}: <span class="text-info">${fundata.currency.signloc}${fundata.rate.usd}</span> ${fundata.currency.local}   Gold: <span class="text-info">${fundata.currency.signloc}${fundata.rate.gold}</span> ${fundata.currency.local}   Silver: <span class="text-info">${fundata.currency.signloc}${fundata.rate.silver}</span> ${fundata.currency.local}
+${fundata.currency.savings}: <span class="text-primary">${fundata.currency.signloc}${fundata.rate.usd}</span> ${fundata.currency.local}   Gold: <span class="text-primary">${fundata.currency.signloc}${fundata.rate.gold}</span> ${fundata.currency.local}   Silver: <span class="text-primary">${fundata.currency.signloc}${fundata.rate.silver}</span> ${fundata.currency.local}
 
 <strong>Annum Quorum</strong>
-Gold Quorum: ${fundata.currency.signloc}${fundata.rate.gold} x 85 = <span class="text-info">${fundata.currency.signloc}${getQuorum().gold.quorloc}</span> ${fundata.currency.local}   = <span class="text-success">${fundata.currency.signsav}${getQuorum().gold.quorsav}</span> ${fundata.currency.savings}  
-Silver Quorum: ${fundata.currency.signloc}${fundata.rate.silver} x 600 = <span class="text-info">${fundata.currency.signloc}${getQuorum().silver.quorloc}</span> ${fundata.currency.local}  = <span class="text-success">${fundata.currency.signsav}${getQuorum().silver.quorsav}</span> ${fundata.currency.savings}\n\n`;
+Gold Quorum: ${fundata.currency.signloc}${fundata.rate.gold} x 85 = <span class="text-primary">${fundata.currency.signloc}${getQuorum().gold.quorloc}</span> ${fundata.currency.local}   = <span class="text-success">${fundata.currency.signsav}${getQuorum().gold.quorsav}</span> ${fundata.currency.savings}  
+Silver Quorum: ${fundata.currency.signloc}${fundata.rate.silver} x 600 = <span class="text-primary">${fundata.currency.signloc}${getQuorum().silver.quorloc}</span> ${fundata.currency.local}  = <span class="text-success">${fundata.currency.signsav}${getQuorum().silver.quorsav}</span> ${fundata.currency.savings}\n\n`;
 }
 
 const totalSavings = () => {
@@ -201,8 +201,7 @@ const printARow = (form_row, cls="pl-0") => {
 }
 const printZakat = (fundata) => {
   if (totalSavings() >= getQuorum().gold.quorsav) {
-    dselect("#cmdline-result").innerHTML = `
-------------------------------------------------------
+    dselect("#cmdline-result").innerHTML = `------------------------------------------------------
 Total Savings   <span class="text-success">${fundata.currency.signsav}${totalSavings()}</span>
 
 <strong>Zakat</strong>
@@ -213,8 +212,7 @@ ${fundata.currency.signsav}${totalSavings()} x 0.025 = ${fundata.currency.signsa
   `;
   } 
   else {
-dselect("#cmdline-result").innerHTML = ` 
-------------------------------------------------------
+dselect("#cmdline-result").innerHTML = `------------------------------------------------------
 Total Savings   <span class="text-success">${fundata.currency.signsav}${totalSavings()}</span>
 
 <strong>Zakat</strong>
@@ -243,12 +241,12 @@ const zakalc = (fundata) => {
 
     if (formValidator('#formRates')) {
       msg = msgSuccess(msg + '<i class="fa fa-check"></i> Rates have been calculated.\n');
-      msgError('3. Please add new fields to My Savings form.\n   List saving sources (i.e Wallet, Safe, Bank, etc.)\nClick the Zakalc button when you\'re ready\n');
+      msgError('3. Please add new fields to My Savings form.\n   List saving sources (i.e Wallet, Safe, Bank, etc.)\n\n   Click the Calculate Zakat button when you\'re ready.\n');
       dselect('#bigGreen').focus();
 
       if (formValidator('#formSavings')) {
         if (!dselect('#formSavings input[required]')) {
-          msgError('3. Please add new fields to My Savings form.\n   List saving sources (i.e Wallet, Safe, Bank, etc.)\nClick the Zakalc button when you\'re ready\n');
+          msgError('3. Please add new fields to My Savings form.\n   List saving sources (i.e Wallet, Safe, Bank, etc.)\n\n   Click the Calculate Zakat button when you\'re ready.\n');
           return false;
         } else {
           msgSuccess(msg + '<i class="fa fa-check"></i> Your savings have been calculated.\n\n');
@@ -264,7 +262,7 @@ const zakalc = (fundata) => {
           return true;
         }
       } else {
-        msgError('3. Please fill in the added fields in My Savings form.\n');
+        msgError('3. Please fill in the added fields in My Savings form.\n\n   Click the Calculate Zakat button when you\'re ready.\n');
         return false;
       }
     } else {

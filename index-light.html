@@ -62,17 +62,6 @@
       .fndsrc-row td { padding: 2px 0 1px; }
       .fndsrc-grp-header td { padding: 2px 0 1px; }
       .fndsrc-grp-body td { padding: 1px 2px; }
-      .coral-circle {
-        background: #cb4b17;
-        position: absolute;
-        font-size: 15pt;
-        left: -34px;
-        top: 4px;
-        text-align: center;
-        height: 35px;
-        width: 35px;
-        padding: 6px 0;
-}
       </style>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
@@ -95,11 +84,8 @@
   </head>
   <body style="background-color: rgb(233, 236, 239);">
     <main role="main">
-      <header style="
-      background: url(bg.png) repeat center center;
-      background-color: rgb(4, 38, 47);
-  ">
-  <div class="collapse" id="navbarHeader">
+      <header>
+  <div class="collapse" id="navbarHeader" style="background-color: rgb(4, 38, 47);">
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
@@ -120,11 +106,8 @@
       </div>
     </div>
   </div>
-  <div class="navbar navbar-dark shadow-sm">
-    <div class="container d-flex justify-content-between" style="
-    background: url(top.png) no-repeat calc(100% - 110px) center;
-    background-size: 39%;
-">
+  <div class="navbar navbar-dark shadow-sm" style="background: url(top.png) no-repeat calc(100% - 131px) center #04262f;background-size: 39%;">
+    <div class="container d-flex justify-content-between">
       <a href="#" class="navbar-brand d-flex align-items-center">
         <i class="fas fa-seedling mr-2 fa-lg text-success"></i>
         <strong class="h4 mb-0 font-weight-bold">Zakalc</strong>
@@ -164,7 +147,17 @@
 
   <form id="formCurrency" action="javascript:void(0);" class="border border-primary rounded p-3 mb-5 position-relative">
     <h5 class="p-2 position-absolute" style="background-color: #083642;top: -23px;">
-      <span class="badge badge-pill badge-dark rounded-circle coral-circle">1</span>
+      <span class="badge badge-pill badge-dark rounded-circle" style="
+            background: #cb4b17;
+            position: absolute;
+            font-size: 15pt;
+            left: -34px;
+            top: 4px;
+            text-align: center;
+            height: 35px;
+            width: 35px;
+            padding: 6px 0;
+        ">1</span>
         Currency</h5>
     <label class="p-2 mb-2">Currency of the country you reside in:</label>
     <select id="currLocal" class="form-control mb-2 mr-sm-2 px-1 py-0" required>
@@ -193,7 +186,17 @@
   <form class="allform" action="javascript:void(0);" >
   <div id="formRates" class="border border-primary rounded p-3 mb-5 position-relative">
       <h5 class="p-2 position-absolute" style="background-color: #083642;top: -23px;">
-        <span class="badge badge-pill badge-dark rounded-circle coral-circle">2</span>
+        <span class="badge badge-pill badge-dark rounded-circle" style="
+            background: #cb4b17;
+            position: absolute;
+            font-size: 15pt;
+            left: -34px;
+            top: 4px;
+            text-align: center;
+            height: 35px;
+            width: 35px;
+            padding: 6px 0;
+        ">2</span>
         Rates</h5>
       <div class="form-row">
         <div class="col-auto d-flex" id="convert">
@@ -216,7 +219,17 @@
 
   <div id="formSavings" class="border border-primary rounded p-3 pb-4 mb-4 position-relative">
     <h5 class="p-2 position-absolute" style="background-color: #083642;top: -23px;">
-      <span class="badge badge-pill badge-dark rounded-circle coral-circle">3</span>
+      <span class="badge badge-pill badge-dark rounded-circle" style="
+            background: #cb4b17;
+            position: absolute;
+            font-size: 15pt;
+            left: -34px;
+            top: 4px;
+            text-align: center;
+            height: 35px;
+            width: 35px;
+            padding: 6px 0;
+        ">3</span>
         My Savings</h5>
     <table id="savingsTable" class="table table-borderless table-sm mt-2 mb-0">
       <tbody>
@@ -225,7 +238,7 @@
           <td>
             <div class="input-group mr-sm-2">
               <div class="input-group-prepend">
-                <div class="input-group-text text-light" style="background-color: #0b2d35;">$</div>
+                <div class="input-group-text">$</div>
               </div>
               <input type="number" step="0.01" class="form-control pr-1 disabled" placeholder="Please add a new sub-field..." value="0" disabled="">
               <button type="button" class="btn-delsrc btn btn-sm border ml-2">
