@@ -174,44 +174,59 @@ const totalSavings = () => {
 }
 
 const printSavings = (fundata) => {
-  const print_table = dselect('#cmdline-savings tbody');
-  const print_grp_head = dselect('#cmdline-savings tbody .savrow-grp-header.template');
-  const print_grp_body = dselect('#cmdline-savings tbody .savrow-grp-body.template');
-  const print_subrow = dselect('#cmdline-savings tbody .savrow-subrow.template');
 
   removeAllSavingsChildNodes(dselect('#cmdline-savings tbody'));
 
-  document.querySelectorAll('#savingsTable tr:not(.template)').forEach(form_row => {
+  document.querySelectorAll('#savingsTable tr:not(.template)').forEach( form_row => {
     if(!form_row.classList.contains('fndsrc-grp-body')) {
-      const print_row = dselect('#cmdline-savings tbody .savrow.template').cloneNode(true);
-      print_row.classList.remove('d-none', 'template');
-      print_row.querySelector('td:nth-child(1)').innerHTML = form_row.querySelector('label').innerHTML;
-      print_row.querySelector('td:nth-child(2)').innerHTML = form_row.querySelector('input').value;
-      print_table.appendChild(print_row);
-    } else {
-      // Print sub-table data
-      console.log('Print sub-table data ', );
+        if(form_row.classList.contains('fndsrc-subrow')) {
+          printARow(form_row, 'pl-4');
+        } else {
+          printARow(form_row);
+        }
     }
   });
 }
 
+const printARow = (form_row, cls="pl-0") => {
+  const print_table = dselect('#cmdline-savings tbody');
+  const print_row = dselect('#cmdline-savings tbody .savrow.template').cloneNode(true);
+  const td1 = print_row.querySelector('td:nth-child(1)');
+  const td2 = print_row.querySelector('td:nth-child(2)');
+  
+  print_row.classList.remove('d-none', 'template');
+  if (cls === "pl-4")
+    print_row.classList.add('text-muted');
+  td1.classList.add(cls);
+  td2.classList.add(cls);
+  td1.innerHTML = form_row.querySelector('label').innerHTML;
+  td2.innerHTML = getData().currency.signsav + form_row.querySelector('input').value;
+  print_table.appendChild(print_row);
+}
 const printZakat = (fundata) => {
   if (totalSavings() >= getQuorum().gold.quorsav) {
-dselect("#cmdline-result").innerHTML = ` 
-<strong>Zakat</strong>
-${fundata.currency.signsav}XXXX.XX x 0.025 = $430
+    dselect("#cmdline-result").innerHTML = `
+------------------------------------------------------
+Total Savings   <span class="text-success">${fundata.currency.signsav}${totalSavings()}</span>
 
-<span>Your Zakat for this Hijri year <span class="text-success">XXXX</span> is: 
-<strong class="text-success h4">${fundata.currency.signsav}XXX ${fundata.currency.savings}</strong> </span>
-  `;
-  } else {
-dselect("#cmdline-result").innerHTML = ` 
 <strong>Zakat</strong>
-${fundata.currency.signsav}XXXX.XX < $4782
+${fundata.currency.signsav}${totalSavings()} x 0.025 = ${fundata.currency.signsav}${Math.ceil(totalSavings() * 0.025)}
 
-<span>Your total savings are less than the gold quorum.</span>
 <span>Your Zakat for this Hijri year <span class="text-success">${fundata.date.hijriyr}</span> is: 
-<strong class="text-success h4">${fundata.currency.signsav}0 ${fundata.currency.savings}</strong> </span>
+<strong class="text-success h3">${fundata.currency.signsav}${Math.ceil(totalSavings() * 0.025)} ${fundata.currency.savings}</strong> </span>
+  `;
+  } 
+  else {
+dselect("#cmdline-result").innerHTML = ` 
+------------------------------------------------------
+Total Savings   <span class="text-success">${fundata.currency.signsav}${totalSavings()}</span>
+
+<strong>Zakat</strong>
+${fundata.currency.signsav}${totalSavings()} < ${fundata.currency.signsav}${getQuorum().gold.quorsav}
+
+<span>Your total savings are less than the gold quorum!</span>
+<span>Your Zakat for this Hijri year <span class="text-success">${fundata.date.hijriyr}</span> is: 
+<strong class="text-success h3">${fundata.currency.signsav}0 ${fundata.currency.savings}</strong> </span>
   `;
   }
 }
@@ -232,11 +247,12 @@ const zakalc = (fundata) => {
 
     if (formValidator('#formRates')) {
       msg = msgSuccess(msg + '<i class="fa fa-check"></i> Rates have been calculated.\n');
-      msgError('3. Please add new fields to My Savings form.\n   List saving sources (i.e Wallet, Safe, Bank, etc.)\n');
+      msgError('3. Please add new fields to My Savings form.\n   List saving sources (i.e Wallet, Safe, Bank, etc.)\nClick the Zakalc button when you\'re ready\n');
+      dselect('#bigGreen').focus();
 
       if (formValidator('#formSavings')) {
         if (!dselect('#formSavings input[required]')) {
-          msgError('3. Please add new fields to My Savings form.\n   List saving sources (i.e Wallet, Safe, Bank, etc.)\n');
+          msgError('3. Please add new fields to My Savings form.\n   List saving sources (i.e Wallet, Safe, Bank, etc.)\nClick the Zakalc button when you\'re ready\n');
           return false;
         } else {
           msgSuccess(msg + '<i class="fa fa-check"></i> Your savings have been calculated.\n\n');
@@ -286,8 +302,8 @@ const activateDelBtn = (button) => {
   });
 }
 
-// Focuses on input of passed element
-const focusInput = (row) => {
+// Focuses on input child of passed parent
+const focusInputOf = (row) => {
   setTimeout(function(){
     row.querySelector('input').focus();
   }, 250);
@@ -306,17 +322,17 @@ dselect('.btn-addsrc').addEventListener('click', function(event){
     main_list.appendChild(new_row);
     
     activateDelBtn(new_row.querySelector('.btn-delsrc'));  
-    focusInput(new_row);
+    focusInputOf(new_row);
   }
 });
 
-// Create new group on clicking Add button
+// Create new group on clicking Add Group button
 dselect('.btn-addsrc-grp').addEventListener('click', function(event){
   const newlabel = prompt("New field label:");
   if(newlabel) {
     const main_list = dselect('#savingsTable tbody');
     
-    // Create group header
+    // 1. Create group header
     const new_grp_header = dselect('#savingsTable tbody .fndsrc-grp-header.template').cloneNode(true);
     new_grp_header.classList.remove('d-none', 'template');
     new_grp_header.querySelector('label').innerHTML = newlabel;
@@ -324,35 +340,65 @@ dselect('.btn-addsrc-grp').addEventListener('click', function(event){
     main_list.appendChild(new_grp_header);
     activateDelBtn(new_grp_header.querySelector('.btn-delsrc'));        
     
-    // Create group body
+    // 2. Create group body
     const new_grp_body = dselect('#savingsTable tbody .fndsrc-grp-body.template').cloneNode(true);
     new_grp_body.classList.remove('d-none', 'template');
     main_list.appendChild(new_grp_body);
+
+    const btngrp_add =  new_grp_body.querySelector('.btn-success');
+    $(btngrp_add).tooltip();
+    btngrp_add.focus();
     activateDelBtn(new_grp_body.querySelector('.btn-delsrc'));
 
-    // Create new sub-row on clicking Add button
+    // On clicking mini add button, add a new sub-row
     new_grp_body.querySelector('.btn-addsrc-sub').addEventListener('click', function(event){
       const newlabel = prompt("New field label:");
       if(newlabel) {
-        const main_list = event.target.parentNode.closest('.addsrc-sm').previousElementSibling;
-        const new_subrow = main_list.querySelector('tbody .fndsrc-subrow.template').cloneNode(true);
+        const sub_list = event.target.parentNode.closest('.addsrc-sm').previousElementSibling.querySelector('tbody');
+        const new_subrow = sub_list.querySelector('.fndsrc-subrow.template').cloneNode(true);
         
         new_subrow.classList.remove('d-none', 'template');
         new_subrow.querySelector('label').innerHTML = newlabel;
         new_subrow.querySelector('input').setAttribute('required','true');
-        main_list.appendChild(new_subrow);
-        
+        sub_list.appendChild(new_subrow);
         activateDelBtn(new_subrow.querySelector('.btn-delsrc'));     
-        focusInput(new_subrow);   
+        focusInputOf(new_subrow);
+
+        // On blur of sub-field, get the sum of all subfields and print sum in its header input
+        new_subrow.querySelector('input').addEventListener('blur', event => { 
+          let sum = 0;
+          let subbody = event.target.parentNode.closest('.fndsrc-grp-body');
+          let prev_sibling = subbody.previousElementSibling;
+          let sum_input = prev_sibling.querySelector('input');
+
+          subbody.querySelectorAll('tr input[required]').forEach( inputitem => {
+            if (inputitem.value)
+              sum += parseFloat(inputitem.value);
+          });
+          sum_input.value = sum;
+        });
+
       }
     });
   }
 });
 
+// On pressing Enter focus on field and sub-field
+document.addEventListener('keydown', (event) => {
+  if (event.key == 'Enter' &&
+      document.activeElement.classList.value === 'form-control pr-1' && 
+      formValidator('#formSavings')
+      ) 
+  { 
+    event.preventDefault();
+    document.activeElement.parentNode.closest('table').nextElementSibling.querySelector('.btn-success:not(.dropdown-toggle)').focus();
+  }
+});
+
 // Print zakat data on clicking Calculate Zakat button
 let btn_zakalc = dselect('#zakalc');
-btn_zakalc.addEventListener('click', ()=>{
-  zakalc();
+btn_zakalc.addEventListener('click', event =>{
+    zakalc();
 });
 
 // Inject local currency name in form

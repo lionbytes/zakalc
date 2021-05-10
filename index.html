@@ -37,6 +37,7 @@
       font-family: 'Share Tech Mono', monospace !important;
       font-size: 11pt;
       padding: 40px 55px;
+      margin-bottom: -23px;
     }
     .cmd-line pre {
       background-color: #171314;
@@ -48,6 +49,10 @@
   </style>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+
+  <link href="favicon.ico" type="image/x-icon" rel="icon" />
+  <link href="favicon.ico" type="image/x-icon" rel="shortcut icon" />
+
   </head>
   <body style="background-color: rgb(233, 236, 239);" class="">
     <main role="main">
@@ -57,7 +62,10 @@
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4 class="text-white">About</h4>
-          <p class="text-muted">Zakat is the Islamic annual charity. This is a simple Zakat  calculator, built with Bootstrap 4 and vanilla JavaScript. This REPL-like Zakat calculator is designed to only aid you in calculating the Zakat of your liquid assets, and is not in any way, shape, or form a professional Zakat calculation application.</p>
+          <p class="text-muted">Zakat is the Islamic annual charity. This is a simple Zakat  calculator, built with Bootstrap 4 and vanilla JavaScript. This REPL-like Zakat calculator is designed to only aid you in calculating the Zakat of your liquid assets, and is not in any way, shape, or form a professional Zakat calculation application.<br><br>
+
+          Zakat calculation in this app is based on the gold quorum, and not the silver quorum.
+          </p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white">Contact</h4>
@@ -103,10 +111,10 @@
   <section class="form-inline border border-light p-3 mb-5 position-relative">
       <h5 class="p-2 position-absolute" style="background-color: #e9ecef;top: -23px;">Date</h5>
     <label class="p-2 mb-2">Hijri</label>
-    <input id="hijri" type="text" class="form-control mb-2 mr-sm-2 px-3 py-0 disabled border border-light" value="" style="width: 140px;     background-color: #ced6de;" disabled="">
+    <input id="hijri" type="text" class="form-control mb-2 mr-sm-2 px-3 py-0 disabled border border-light" value="" style="width: 140px; background-color: #ced6de;" disabled="">
   
     <label class="p-2 mb-2">Gregorian </label>
-    <input id="gregorian" type="text" class="form-control mb-2 mr-sm-2 px-3 py-0 disabled border border-light" value="" style="width: 188px;     background-color: #ced6de;" disabled="">
+    <input id="gregorian" type="text" class="form-control mb-2 mr-sm-2 px-3 py-0 disabled border border-light" value="" style="width: 188px; background-color: #ced6de;" disabled="">
   </section>
 
   <form id="formCurrency" action="javascript:void(0);" class="border border-light p-3 mb-5 position-relative">
@@ -129,7 +137,7 @@
       <option value="GOLD">GOLD</option>
     </select>
 
-    <button id="defineCurrency" type="button" class="btn btn-primary mb-2">
+    <button id="defineCurrency" type="submit" class="btn btn-primary mb-2">
       Submit
     </button>
 
@@ -142,7 +150,7 @@
         <div class="col-auto d-flex" id="convert">
           <label class="p-2 mb-2 text-nowrap">_ to _</label>
           <input type="number" step="0.01" class="form-control mb-2 px-1 py-0" placeholder=""
-            style="width: 70px;z-index: 1;" required="">
+            style="width: 70px;z-index: 1;" required=""> 
         </div>
         <div class="col-auto d-flex" id="rateGold">
           <label class="p-2 mb-2">Gold</label>
@@ -168,7 +176,7 @@
               <div class="input-group-prepend">
                 <div class="input-group-text">$</div>
               </div>
-              <input type="number" class="form-control pr-1 disabled" placeholder="Please add a new sub-field..." value="0" disabled="">
+              <input type="number" step="0.01" class="form-control pr-1 disabled" placeholder="Please add a new sub-field..." value="0" disabled="">
               <button type="button" class="btn-delsrc btn btn-sm border ml-2">
                 <i class="fas fa-trash-alt fa-1x px-1"></i>
               </button>
@@ -188,7 +196,7 @@
                           <div class="input-group-prepend">
                             <div class="input-group-text">$</div>
                           </div>
-                          <input type="number" class="form-control pr-1" placeholder="In USD">
+                          <input type="number" step="0.01" class="form-control pr-1" placeholder="In USD">
                           <button type="button" class="btn-delsrc btn btn-sm btn-dark ml-2">
                             <i class="far fa-trash-alt fa-sm px-0"></i>
                           </button>
@@ -200,7 +208,7 @@
                 </table>
                 <div class="addsrc-sm text-right rounded-bottom" style="margin: 4px -11px -3px;background-color: #dae1e6;">
                   <small class="text-muted">Add Fund Sub-source</small>
-                  <button type="button" class="btn btn-addsrc-sub btn-sm btn-success m-1" data-toggle="modal" data-target="#addFieldModal" title="Wallet, Safe, Bank, etc.">
+                  <button type="button" class="btn btn-addsrc-sub btn-sm btn-success m-1" data-toggle="tooltip" data-placement="top" title="Add New Sub-field">
                     <i class="fa fa-plus fa-sm px-0"></i>
                   </button>
                   <div></div>
@@ -216,7 +224,7 @@
               <div class="input-group-prepend">
                 <div class="input-group-text">$</div>
               </div>
-              <input type="number" class="form-control pr-1" placeholder="In USD">
+              <input type="number" step="0.01" class="form-control pr-1" placeholder="In USD">
               <button type="button" class="btn-delsrc btn btn-sm border ml-2">
                 <i class="fas fa-trash-alt fa-1x px-1"></i>
               </button>
@@ -228,21 +236,21 @@
     <div class="addsrc-lg text-right rounded-bottom p-1" style="margin: 20px -16px -24px; background-color: #ced6de;">
       <span class="text-muted mx-1">Add Fund Source </span>
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <button type="button" id="bigGreen" class="btn btn-addsrc btn-success" title="Wallet, Safe, Bank, etc." data-toggle="modal" data-target="#addFieldModal">
+        <button type="button" id="bigGreen" class="btn btn-addsrc btn-success"  data-toggle="tooltip" data-placement="top" title="Add New Field">
           <i class="fa fa-plus"></i>
         </button>
         <div class="btn-group" role="group">
           <button id="btnGroupDrop1" type="button" class="btn btn-sm btn-success dropdown-toggle border border-success pl-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #318c37;">
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-            <a class="dropdown-item btn-addsrc" href="#" role="button" data-toggle="modal" data-target="#addFieldModal" onclick="document.querySelector('#bigGreen').click();">Add Fund Source </a>
+            <a class="dropdown-item btn-addsrc" href="#" role="button" onclick="document.querySelector('#bigGreen').click();">Add Fund Source </a>
             <a class="dropdown-item btn-addsrc-grp" href="#" role="button" data-toggle="modal" data-target="#addFieldGroupModal">Add Grouped Fund Sources</a>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <button id="zakalc" type="button" class="btn btn-lg btn-primary d-block w-100 position-absolute mb-2 mt-5">
+      <button id="zakalc" type="submit" class="btn btn-lg btn-primary d-block w-100 position-absolute mb-2 mt-5">
       <i class="fa fa-seedling d-none"></i><span> Zakalc! </span></button>
     </div>
   </div>
@@ -281,7 +289,7 @@
       <pre id="cmdline-rates"></pre>
       <div id="cmdline-savings" class="d-none">
         <strong>My Savings</strong><br>
-        <table class="table table-sm table-borderless mb-0 text-light">
+        <table class="table table-sm table-borderless mb-0" style="color: #bbb;">
           <tbody>
             <tr class="savrow template d-none">      
               <td style="white-space: nowrap; width: 1%; padding-right: 20px;">Label</td>
@@ -329,5 +337,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="zakat.js"></script>
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
 
 </body></html>
