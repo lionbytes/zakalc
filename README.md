@@ -15,6 +15,7 @@ http://lionbytes.net/zakalc
 - ~~Test for negative values in "My Savings" only (e.g. Debt to Osama $-246)~~
 - Use Solar theme
 - Quickly: Add Islamic art theme touches
+- Create GitHub repo cover image
 - LAUNCH!
 - Add a select input to base the Zakat either on gold quorom, silver quorom, or a mix quorom.
 - Fix responsiveness
