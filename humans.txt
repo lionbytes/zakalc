@@ -1,0 +1,10 @@
+﻿/* TEAM */
+	Developer: Lionbytes
+	Contact: lionbytes.net [at] gmail.com
+	From: Istanbul, Turkey
+
+/* SITE */
+	Launch date: 2020/05/10
+	Last update: 2020/05/10
+	Language: Arabic, English
+	Doctype: HTML5

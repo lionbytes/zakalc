@@ -1,0 +1,10 @@
+{
+  "name": "Zakalc",
+  "short_name": "Zakalc",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#083642",
+  "theme_color": "#083642"
+}
