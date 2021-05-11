@@ -4,18 +4,34 @@ Zakat is the Islamic annual charity. This is a simple Zakat  calculator, built w
 ### Demo
 http://lionbytes.net/zakalc
 
-### TODO: Next Cycle
-- Fix UI issues appearing in mobile screens
-- Fix responsiveness
+### TODO
+- Mention g for precious metals
+- Fix footer looking like a horizontal scroll
+- Mobile version
+  - Hide date form
+  - Fix responsiveness
+  - Scroll to top after each successful form validation
+- Turn currency select items into text inputs
+- "Rates" seems to be vague
 - Share demo site on social media
 - Prep GitHub images
 - Share GitHub link on social media
-- Refactor JavaScript
+- Quickly: Refactor JavaScript code if needed
+- Quickly: Organize HTML code
 - Provide an option to base the Zakat either on gold quorom, silver quorom, or a mix quorom of both.
 - Share quorom update on social media
 - Export data to JSON under year number
 - Import data from JSON under year number
 - Share JSON update on social media
+
+### TODO: 2nd Cycle – if app garners attraction
+- Refactoring: List all JS DOM varialbes inside one object that is created on DOM Ready (i.e. forms, constant inputs);
+- Instead of JS prompts, use modal box to create and delete Savings field?
+- Get calculated data on form change instead of clicking submit
+- Get all currency and metal rates data from an accurate online API. 
+  This way, the user can immediately start listing their fund sources each in its own currency, 
+  then values of all entered the fund sources will be looked up in the API and be converted and 
+  unified into one currency chosen by the user at the beginning of the process.
 
 ### Useful Links
 - https://www.the-lazy-dev.com/en/get-today-hijri-date-in-javascript/
