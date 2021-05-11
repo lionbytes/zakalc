@@ -33,7 +33,7 @@ http://lionbytes.net/zakalc
   This way, the user can immediately start listing their fund sources each in its own currency, 
   then values of all entered the fund sources will be looked up in the API and be converted and 
   unified into one currency chosen by the user at the beginning of the process.
-- Enable the user to enter custom prices for currencies with inaccurate rates.
+- Then, enable the user to enter custom prices for currencies with inaccurate rates.
 
 ### Useful Links
 - https://www.the-lazy-dev.com/en/get-today-hijri-date-in-javascript/
