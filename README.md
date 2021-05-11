@@ -34,6 +34,7 @@ http://lionbytes.net/zakalc
   then values of all entered the fund sources will be looked up in the API and be converted and 
   unified into one currency chosen by the user at the beginning of the process.
 - Then, enable the user to enter custom prices for currencies with inaccurate rates.
+- Add email reminder feature that sends emails every year to the user reminding them of paying Zakat.
 
 ### Useful Links
 - https://www.the-lazy-dev.com/en/get-today-hijri-date-in-javascript/
