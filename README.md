@@ -10,7 +10,8 @@ http://lionbytes.net/zakalc
 - Mobile version
   - Hide date form
   - Fix responsiveness
-  - Scroll to top after each successful form validation
+  - Scroll to top after each successful form validation?
+  - Definitely scroll to top after clicking the Calculate Zakat button
 - Turn currency select items into text inputs
 - "Rates" seems to be vague
 - Share demo site on social media
