@@ -5,11 +5,17 @@ Zakat is the Islamic annual charity. This is a simple Zakat  calculator, built w
 http://lionbytes.net/zakalc
 
 ### TODO: Next Cycle
+- Fix UI issues appearing in mobile screens
+- Fix responsiveness
+- Share demo site on social media
 - Prep GitHub images
+- Share GitHub link on social media
+- Refactor JavaScript
 - Provide an option to base the Zakat either on gold quorom, silver quorom, or a mix quorom of both.
+- Share quorom update on social media
 - Export data to JSON under year number
 - Import data from JSON under year number
-- Fix responsiveness
+- Share JSON update on social media
 
 ### Useful Links
 - https://www.the-lazy-dev.com/en/get-today-hijri-date-in-javascript/
