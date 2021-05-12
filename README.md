@@ -7,7 +7,7 @@ http://lionbytes.net/zakalc
 ### TODO
 - ~~Mention g for precious metals~~
 - ~~Fix footer looking like a horizontal scroll~~
-- Mobile version
+- ~~Mobile version~~
   - ~~Hide date form~~
   - ~~Fix responsiveness~~
   - ~~Scroll to top after each successful form validation?~~
