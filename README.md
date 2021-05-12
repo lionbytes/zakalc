@@ -5,15 +5,15 @@ Zakat is the Islamic annual charity. This is a simple Zakat  calculator, built w
 http://lionbytes.net/zakalc
 
 ### TODO
-- Mention g for precious metals
-- Fix footer looking like a horizontal scroll
+- ~~Mention g for precious metals~~
+- ~~Fix footer looking like a horizontal scroll~~
 - Mobile version
-  - Hide date form
-  - Fix responsiveness
-  - Scroll to top after each successful form validation?
-  - Definitely scroll to top after clicking the Calculate Zakat button
+  - ~~Hide date form~~
+  - ~~Fix responsiveness~~
+  - ~~Scroll to top after each successful form validation?~~
+  - ~~Definitely scroll to top after clicking the Calculate Zakat button~~
+- ~~"Rates" seems to be vague~~
 - Turn currency select items into text inputs
-- "Rates" seems to be vague
 - Share demo site on social media
 - Prep GitHub images
 - Share GitHub link on social media
