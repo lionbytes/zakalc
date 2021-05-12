@@ -13,19 +13,19 @@ http://lionbytes.net/zakalc
   - ~~Scroll to top after each successful form validation?~~
   - ~~Definitely scroll to top after clicking the Calculate Zakat button~~
 - ~~"Rates" seems to be vague~~
-- Turn currency select items into text inputs
+- ~~Prep GitHub images~~
+- ~~Add top 10 world currencies~~
 - Share demo site on social media
-- Prep GitHub images
-- Share GitHub link on social media
+- Provide an option to base the Zakat either on gold quorom, silver quorom, or a mix quorom of both.
 - Quickly: Refactor JavaScript code if needed
 - Quickly: Organize HTML code
-- Provide an option to base the Zakat either on gold quorom, silver quorom, or a mix quorom of both.
 - Share quorom update on social media
 - Export data to JSON under year number
 - Import data from JSON under year number
 - Share JSON update on social media
 
 ### TODO: 2nd Cycle – if app garners attraction
+- Turn currency select items into text inputs
 - Refactoring: List all JS DOM varialbes inside one object that is created on DOM Ready (i.e. forms, constant inputs);
 - Instead of JS prompts, use modal box to create and delete Savings field?
 - Get calculated data on form change instead of clicking submit
