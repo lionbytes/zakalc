@@ -153,11 +153,11 @@ const defineCurrencyData = (fundata) => {
 
 const printRatesNQuorum = (fundata) => {
   dselect("#cmdline-rates").innerHTML = `<strong>Rates</strong>
-${fundata.currency.savings}: <span class="text-primary">${fundata.currency.signloc}${fundata.rate.usd}</span> ${fundata.currency.local}   Gold: <span class="text-primary">${fundata.currency.signloc}${fundata.rate.gold}</span> ${fundata.currency.local}   Silver: <span class="text-primary">${fundata.currency.signloc}${fundata.rate.silver}</span> ${fundata.currency.local}
+${fundata.currency.savings}: <span class="text-primary">${fundata.currency.signloc}${fundata.rate.usd}</span><span class="d-none d-inline-sm"> ${fundata.currency.local}</span>   Gold: <span class="text-primary">${fundata.currency.signloc}${fundata.rate.gold}</span><span class="d-none d-inline-sm"> ${fundata.currency.local}</span>   Silver: <span class="text-primary">${fundata.currency.signloc}${fundata.rate.silver}</span><span class="d-none d-inline-sm"> ${fundata.currency.local}</span>
 
 <strong>Annum Quorum</strong>
-Gold Quorum: ${fundata.currency.signloc}${fundata.rate.gold} x 85 = <span class="text-primary">${fundata.currency.signloc}${getQuorum().gold.quorloc}</span> ${fundata.currency.local}   = <span class="text-success">${fundata.currency.signsav}${getQuorum().gold.quorsav}</span> ${fundata.currency.savings}  
-Silver Quorum: ${fundata.currency.signloc}${fundata.rate.silver} x 600 = <span class="text-primary">${fundata.currency.signloc}${getQuorum().silver.quorloc}</span> ${fundata.currency.local}  = <span class="text-success">${fundata.currency.signsav}${getQuorum().silver.quorsav}</span> ${fundata.currency.savings}\n\n`;
+Gold<span class="d-none d-sm-inline"> Quorum</span>: ${fundata.currency.signloc}${fundata.rate.gold} x 85 = <span class="text-primary">${fundata.currency.signloc}${getQuorum().gold.quorloc}</span> ${fundata.currency.local}   = <span class="text-success">${fundata.currency.signsav}${getQuorum().gold.quorsav}</span> ${fundata.currency.savings}  
+Silver<span class="d-none d-sm-inline"> Quorum</span>: ${fundata.currency.signloc}${fundata.rate.silver} x 600 = <span class="text-primary">${fundata.currency.signloc}${getQuorum().silver.quorloc}</span> ${fundata.currency.local}  = <span class="text-success">${fundata.currency.signsav}${getQuorum().silver.quorsav}</span> ${fundata.currency.savings}\n\n`;
 }
 
 const totalSavings = () => {
@@ -204,8 +204,7 @@ const printARow = (form_row, cls="pl-0") => {
 }
 const printZakat = (fundata) => {
   if (totalSavings() >= getQuorum().selected()) {
-    dselect("#cmdline-result").innerHTML = `------------------------------------------------------
-Total Savings   <span class="text-success">${fundata.currency.signsav}${totalSavings()}</span>
+    dselect("#cmdline-result").innerHTML = `<hr style="border-top: 2px dashed #fff;background-color: transparent !important;" />Total Savings   <span class="text-success">${fundata.currency.signsav}${totalSavings()}</span>
 
 <strong>Zakat</strong>
 ${fundata.currency.signsav}${totalSavings()} x 0.025 = ${fundata.currency.signsav}${Math.ceil(totalSavings() * 0.025)}
@@ -215,8 +214,7 @@ ${fundata.currency.signsav}${totalSavings()} x 0.025 = ${fundata.currency.signsa
   `;
   } 
   else {
-dselect("#cmdline-result").innerHTML = `------------------------------------------------------
-Total Savings   <span class="text-success">${fundata.currency.signsav}${totalSavings()}</span>
+dselect("#cmdline-result").innerHTML = `<hr style="border-top: 2px dashed #fff;background-color: transparent !important;" />Total Savings   <span class="text-success">${fundata.currency.signsav}${totalSavings()}</span>
 
 <strong>Zakat</strong>
 ${fundata.currency.signsav}${totalSavings()} < ${fundata.currency.signsav}${getQuorum().selected()}

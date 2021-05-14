@@ -294,9 +294,6 @@
     <div id="formQuorum" class="border border-primary rounded p-3 mb-5 position-relative">
       <h5 class="p-2 position-absolute" style="background-color: #083642;top: -23px;">
         <span class="badge badge-pill badge-dark rounded-circle coral-circle">3</span>Quorum Base 
-        <a href="javascript:void(0);" data-toggle="tooltip" data-placement="right" title="" data-original-title="Currency and precious metal exchange local prices">
-          <i class="far fa-question-circle fa-sm mx-1 text-muted"></i>
-        </a>
       </h5>
       <div class="bg-black text-muted px-4 py-3 mb-2 fa-sm w-100" style="background-color: #05252d;border-radius: 5px;">
         Zakat calculation in this app is based on the gold quorum by default. Please choose Silver if that's your preference.
@@ -394,19 +391,19 @@
     </table>
     <div class="addsrc-lg text-right rounded-bottom p-1" style="margin: 20px -16px -24px;background-color: #05252d;">
       <span class="text-muted mx-1">Add Fund Source </span>
-      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <button type="button" id="bigGreen" class="btn btn-addsrc btn-success"  data-toggle="tooltip" data-placement="top" title="Add New Field">
-          <i class="fa fa-plus"></i>
+      <div class="btn-group dropup">
+        <button id="bigGreen" type="button" class="btn btn-addsrc btn-success" data-toggle="tooltip" data-placement="top" title="Add New Field">
+          <i class="fa fa-plus"></i> 
         </button>
-        <div class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-sm btn-success dropdown-toggle border border-success pl-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #258880;">
-          </button>
-          <div class="dropdown-menu dropdown-menu-right bg-white" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-            <a class="dropdown-item btn-addsrc" href="#" role="button" onclick="document.querySelector('#bigGreen').click();">Add Fund Source </a>
-            <a class="dropdown-item btn-addsrc-grp" href="#" role="button" data-toggle="modal" data-target="#addFieldGroupModal">Add Grouped Fund Sources</a>
-          </div>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split border border-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="background-color: #258880;">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right bg-white"> 
+          <a class="dropdown-item btn-addsrc" href="#" role="button" onclick="document.querySelector('#bigGreen').click();">Add Fund Source </a>
+          <a class="dropdown-item btn-addsrc-grp" href="#" role="button" data-toggle="modal" data-target="#addFieldGroupModal">Add Grouped Fund Sources</a>
         </div>
       </div>
+      
     </div>
   </div>
   <button id="zakalc" type="submit" class="btn btn-lg btn-primary w-100 mb-2" style="background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);">
@@ -441,7 +438,7 @@
 
   <div class="col-lg-6 col-12 d-flex pb-5 mb-3 mb-lg-5">
     <div class="cmd-line align-self-stretch w-100 px-4 px-lg-5 py-4 py-lg-5 overflow-hidden">
-      <pre id="cmdline-dates" class="text-muted d-none"><strong>Hijri Date:</strong> <span id="cmd-hijri"></span>     <strong>Gregorian Date:</strong> <span id="cmd-gregorian" style="width: 78px; display: inline-block; overflow: hidden; margin: -7px 0;"></span>
+      <pre id="cmdline-dates" class="text-muted d-none"><strong>Hijri Date:</strong> <span id="cmd-hijri"></span>     <br class="d-inline d-sm-none" /><strong>Gregorian Date:</strong> <span id="cmd-gregorian" style="width: 78px; display: inline-block; overflow: hidden; margin: -7px 0;"></span>
       </pre>
       <pre id="cmdline-msg"><span class="msg-success text-success d-none d-sm-block" style="display: none"></span><span class="msg-error"><h5 class="mb-0" style="color: #bbb;">Welcome, to the Zakalc app. </h5><span style="color: #bbb;">1. First, please fill in the Currency form fields.</span></span></pre>
       
