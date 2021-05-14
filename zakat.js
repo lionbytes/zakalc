@@ -7,24 +7,19 @@ const getCurrSign = (string) => {
   let sign;
 
   switch (string) {
-    case "TRY":
-      sign = "₺";
-      break;
-
-    case "USD":
-      sign = "$";
-      break;
-
-    case "EURO":
-      sign = "€";
-      break;
-
-    case "GOLD":
-      sign = "g";
-      break;
-  
-    default:
-      break;
+    case "USD":     sign = "$"; break;
+    case "EURO":    sign = "€"; break;
+    case "GBP":     sign = "£"; break;
+    case "JPY":     sign = "¥"; break;
+    case "CAD":     sign = "$"; break;
+    case "KD":      sign = ""; break;
+    case "SFr.":    sign = ""; break;
+    case "AUD":     sign = "$"; break;
+    case "TRY":     sign = "₺"; break;
+    case "INR":     sign = "₹"; break;
+    case "GOLD":    sign = "gr"; break;
+    case "Silver":  sign = "gr"; break;
+    default:        sign = "¤"; break;
   }
   return sign;
 }
@@ -47,14 +42,14 @@ const getData = () => {
     rate: {
       usd:    dselect('#convert input').value, 
       gold:   dselect('#rateGold input').value, 
-      silver: dselect('#rateSilver input').value
+      silver: dselect('#rateSilver input').value,
     },
   };
 
   return fundata;
 }
 
-const getQuorum = () => {
+let getQuorum = () => {
   return {
     gold: {
       quorloc: getData().rate.gold * 85,
@@ -64,7 +59,13 @@ const getQuorum = () => {
       quorloc: getData().rate.silver * 600,
       quorsav: Math.ceil((getData().rate.silver * 600) / getData().rate.usd),
     },
-
+    selected: function(){
+      if (dselect('#formQuorum input#goldRadio').checked) {
+        return getQuorum().gold.quorsav;
+      } else {
+        return getQuorum().silver.quorsav;
+      }
+    },
   };
 }
 // CLEAR
@@ -80,7 +81,7 @@ const revealResults = () => {
 }
 const msgSuccess = (msg) => {
   const cmdline_msg = dselect('#cmdline-msg .msg-success');
-  cmdline_msg.classList.add('d-block');
+  cmdline_msg.classList.add('d-sm-block');
   cmdline_msg.classList.remove('d-none');
   cmdline_msg.innerHTML = msg;
   return msg;
@@ -93,12 +94,14 @@ const msgError = (msg) => {
   emptyResults();
   return msg;
 }
-// CLEAR
+
 const getDates = () => { 
-  // Print Hijri date
   dselect("#hijri").value = getData().date.hijri;
-  // Print Gregorian date
   dselect("#gregorian").value = getData().date.greg;
+
+  dselect("#cmdline-dates").classList.remove('d-none');
+  dselect("#cmd-hijri").innerHTML = getData().date.hijri;
+  dselect("#cmd-gregorian").innerHTML = getData().date.greg;
 }
 // CLEAR
 const formValidator = (str="form") => {
@@ -144,7 +147,7 @@ const defineCurrencyData = (fundata) => {
       record.querySelector('input').setAttribute('placeholder',`In ${fundata.currency.savings}`);
     });
   } catch (error) {
-    console.log('Error in saving records', error.message);      
+    console.log('Error in funds records', error.message);      
   }
 }
 
@@ -200,7 +203,7 @@ const printARow = (form_row, cls="pl-0") => {
   print_table.appendChild(print_row);
 }
 const printZakat = (fundata) => {
-  if (totalSavings() >= getQuorum().gold.quorsav) {
+  if (totalSavings() >= getQuorum().selected()) {
     dselect("#cmdline-result").innerHTML = `------------------------------------------------------
 Total Savings   <span class="text-success">${fundata.currency.signsav}${totalSavings()}</span>
 
@@ -216,9 +219,9 @@ dselect("#cmdline-result").innerHTML = `----------------------------------------
 Total Savings   <span class="text-success">${fundata.currency.signsav}${totalSavings()}</span>
 
 <strong>Zakat</strong>
-${fundata.currency.signsav}${totalSavings()} < ${fundata.currency.signsav}${getQuorum().gold.quorsav}
+${fundata.currency.signsav}${totalSavings()} < ${fundata.currency.signsav}${getQuorum().selected()}
 
-<span>Your total savings are less than the gold quorum!</span>
+<span>Your total savings are less than the ${dselect('#formQuorum input:checked').value} quorum!</span>
 <span>Your Zakat for this Hijri year <span class="text-success">${fundata.date.hijriyr}</span> is: 
 <strong class="text-success h3">${fundata.currency.signsav}0 ${fundata.currency.savings}</strong> </span>
   `;
@@ -240,16 +243,16 @@ const zakalc = (fundata) => {
     msgError('2. Please fill in all the Rates form fields.\n');
 
     if (formValidator('#formRates')) {
-      msg = msgSuccess(msg + '<i class="fa fa-check"></i> Rates have been calculated.\n');
-      msgError('3. Please add new fields to My Savings form.\n   List saving sources (i.e Wallet, Safe, Bank, etc.)\n\n   Click the Calculate Zakat button when you\'re ready.\n');
+      msg = msgSuccess(msg + '<i class="fa fa-check"></i> Rates have been set.\n<i class="fa fa-check"></i> Quorum metal base is selected.\n');
+      msgError('4. Please add new fields to My Funds form.\n');
       dselect('#bigGreen').focus();
 
       if (formValidator('#formSavings')) {
         if (!dselect('#formSavings input[required]')) {
-          msgError('3. Please add new fields to My Savings form.\n   List saving sources (i.e Wallet, Safe, Bank, etc.)\n\n   Click the Calculate Zakat button when you\'re ready.\n');
+          msgError('3. Please add new fields to My Funds form.\n');
           return false;
         } else {
-          msgSuccess(msg + '<i class="fa fa-check"></i> Your savings have been calculated.\n\n');
+          msgSuccess(msg + '<i class="fa fa-check"></i> Your Zakat has been calculated.\n\n');
           // dselect('#cmdline-msg .msg-success').classList.add('d-none');
           // dselect('#cmdline-msg .msg-success').classList.remove('d-block');
           dselect('#cmdline-msg .msg-error').classList.add('d-none');
@@ -259,10 +262,12 @@ const zakalc = (fundata) => {
           printSavings(getData());
           printZakat(getData());
           revealResults();
+          dselect('#backtotop').click();
+        
           return true;
         }
       } else {
-        msgError('3. Please fill in the added fields in My Savings form.\n\n   Click the Calculate Zakat button when you\'re ready.\n');
+        msgError('4. Please fill in the added fields in My Funds form.\n\n   Click the <span class="text-success">Calculate Zakat</span> button when you\'re ready.\n');
         return false;
       }
     } else {
@@ -392,7 +397,7 @@ document.addEventListener('keydown', (event) => {
 // Print zakat data on clicking Calculate Zakat button
 let btn_zakalc = dselect('#zakalc');
 btn_zakalc.addEventListener('click', event =>{
-    zakalc();
+  zakalc();
 });
 
 // Inject local currency name in form

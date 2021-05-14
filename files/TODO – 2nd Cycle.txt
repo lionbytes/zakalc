@@ -1,0 +1,7 @@
+### TODO: 2nd Cycle (only if app becomes widely successful)
+- Refactoring: List all JS DOM varialbes inside one object that is created on DOM Ready (i.e. forms, constant inputs);
+- Quickly: Refactor JavaScript code if needed
+- Quickly: Organize HTML code
+- Instead of JS prompts, use modal box to create and delete Savings field?
+- Get calculated data on form change instead of clicking submit
+- Get currency rate prices from an online API
