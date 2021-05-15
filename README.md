@@ -5,26 +5,13 @@ Zakat is the Islamic annual charity. This is a simple Zakat  calculator, built w
 http://lionbytes.net/zakalc
 
 ### TODO
-- ~~Mention g for precious metals~~
-- ~~Fix footer looking like a horizontal scroll~~
-- ~~Mobile version~~
-  - ~~Hide date form~~
-  - ~~Fix responsiveness~~
-  - ~~Scroll to top after each successful form validation?~~
-  - ~~Definitely scroll to top after clicking the Calculate Zakat button~~
-- ~~"Rates" seems to be vague~~
-- ~~Prep GitHub images~~
-- ~~Add top 10 world currencies~~
-- Share demo site on social media
-- Provide an option to base the Zakat either on gold quorom, silver quorom, or a mix quorom of both.
-- Quickly: Refactor JavaScript code if needed
-- Quickly: Organize HTML code
-- Share quorom update on social media
+- Refactor HTML code
+- Refactor JavaScript code if needed
 - Export data to JSON under year number
 - Import data from JSON under year number
-- Share JSON update on social media
+- Share on social media
 
-### TODO: 2nd Cycle – if app garners attraction
+### TODO: 2nd Cycle
 - Turn currency select items into text inputs
 - Refactoring: List all JS DOM varialbes inside one object that is created on DOM Ready (i.e. forms, constant inputs);
 - Instead of JS prompts, use modal box to create and delete Savings field?
